@@ -38,6 +38,7 @@ public class Main {
 		
 		//IBM
 		c1.addEmployee(e1);
+		//c1.addEmployee(e1);
 		c1.addEmployee(e2);
 		
 		c1.addEmployment(emp1);
@@ -51,6 +52,7 @@ public class Main {
 		
 		//employees
 		e1.addComapny(c1);
+		//e1.addComapny(c1);
 		e1.addEmployment(emp1);
 		
 		e2.addComapny(c2);

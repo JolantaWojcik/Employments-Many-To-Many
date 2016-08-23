@@ -82,9 +82,9 @@ public class Employee {
 		}
 		
 		public void addComapny(Company c){
-		//	if (comapanies.contains(c)) {
-		//		throw new IllegalStateException(name + " has already this job " + c.);
-		//}
+			if (comapanies.contains(c)) {
+				throw new IllegalStateException(name + " has already this job " + c);
+		}
 			comapanies.add(c);
 			c.getEmployees().add(this);
 		}
