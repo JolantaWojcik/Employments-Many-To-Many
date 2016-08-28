@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class Main {
 	
-	public static void main(String[] args) throws ParseException {
+public static void main(String[] args) throws ParseException {
 		
 		SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -51,26 +51,25 @@ public class Main {
 		c2.addEmployment(emp4);
 		
 		//employees
-		e1.addComapny(c1);
-		//e1.addComapny(c1);
+	//	e1.addComapny(c1);
 		e1.addEmployment(emp1);
 		
-		e2.addComapny(c2);
-		e2.addComapny(c1);
+	//	e2.addComapny(c2);
+	//	e2.addComapny(c1);
 		e2.addEmployment(emp2);
 		e2.addEmployment(emp3);
 		
-		e3.addComapny(c2);
+	//	e3.addComapny(c2);
 		e3.addEmployment(emp4);
 
 	//	e1.getComapnies().forEach(System.out::println);
-		System.out.println(e1.getName() +" is employeed " + e1.getComapnies() + "\n position details "+
+		System.out.println(e1.getName() +" is employeed " + emp1.getCompanies() + "\n position details "+
 				e1.getEmployment());
-		System.out.println(e2.getName() +" is employeed " + e2.getComapnies()
-		+ "\n position details "+ e2.getEmployment());
-		System.out.println(e3.getName() +" is employeed " + e3.getComapnies());
-		System.out.println("IBM Employees " + c1.getEmployees()
-			+ "\n position details "+ c1.getEmployment());
+	//	System.out.println(e2.getName() +" is employeed " + e2.getComapnies()
+	//	+ "\n position details "+ e2.getEmployment());
+	//	System.out.println(e3.getName() +" is employeed " + e3.getComapnies());
+	//	System.out.println("IBM Employees " + c1.getEmployees()
+	//		+ "\n position details "+ c1.getEmployment());
 		System.out.println("ABB Employees " + c2.getEmployees());
 		
 		 ArrayList<Employment> employment = new ArrayList<>();
