@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Employment {
@@ -11,6 +12,18 @@ public class Employment {
 	//one-to-many
 	private Employee employees;
 	private Company companies;
+	private SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+	
+	public Employment(){
+		
+	}
+	
+	public Employment(String position, int salary, Date startDate) {
+		super();
+		this.position = position;
+		this.salary = salary;
+		this.startDate = startDate;
+	}
 	
 	public Employment(String position, int salary, Date startDate, Date endDate) {
 		super();
@@ -68,12 +81,10 @@ public class Employment {
 		this.endDate = endDate;
 	}
 
+	//zle?
 	@Override
 	public String toString() {
-		return "Employment [position=" + position + ", salary=" + salary + ", startDate=" + startDate + ", endDate="
-				+ endDate + "]";
+		return "Employment [position=" + position + ", salary=" + salary + ", startDate=" + dt.format((startDate)) + "]";
 	}
-	
-	
-	
+
 }

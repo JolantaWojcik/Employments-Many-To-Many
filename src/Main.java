@@ -13,71 +13,48 @@ import java.util.Date;
  *  ile zarabia³ oraz od kiedy do kiedy pracowa³.
  */
 public class Main {
-	
-public static void main(String[] args) throws ParseException {
-		
+
+	public static void main(String[] args) throws ParseException {
+
 		SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-		
+
 		//many-to-many
 		Employee e1 = new Employee("Jan", "Kowalski");
 		Employee e2 = new Employee("Arkadiusz", "Nowak");
 		Employee e3 = new Employee("Anna", "Nowak");
-		
+
 		Company c1 = new Company("IBM", "Krakow, Bronowice");
 		Company c2 = new Company("ABB", "Krakow, Starowislna");
-	
-	//	try {
-			Employment emp1 = new Employment("Accountant", 4000, dt.parse("2010-09-08"), new Date());
-			Employment emp2 = new Employment("Senior HR", 3600, dt.parse("2000-05-08"), new Date());
-			Employment emp3 = new Employment("Coach", 3500, dt.parse("2005-07-08"), new Date());
-			Employment emp4 = new Employment("Supporr", 3000, dt.parse("2011-01-08"), new Date());
-	//	} catch (ParseException e) {
-			// TODO Auto-generated catch block
-	//		e.printStackTrace();
-	//	}
-		
-		//IBM
-		c1.addEmployee(e1);
-		//c1.addEmployee(e1);
-		c1.addEmployee(e2);
-		
-		c1.addEmployment(emp1);
-		c1.addEmployment(emp2);
-		//ABB
-		c2.addEmployee(e2);
-		c2.addEmployee(e3);
-		
-		c2.addEmployment(emp3);
-		c2.addEmployment(emp4);
-		
-		//employees
-	//	e1.addComapny(c1);
-		e1.addEmployment(emp1);
-		
-	//	e2.addComapny(c2);
-	//	e2.addComapny(c1);
-		e2.addEmployment(emp2);
-		e2.addEmployment(emp3);
-		
-	//	e3.addComapny(c2);
-		e3.addEmployment(emp4);
 
-	//	e1.getComapnies().forEach(System.out::println);
-		System.out.println(e1.getName() +" is employeed " + emp1.getCompanies() + "\n position details "+
-				e1.getEmployment());
-	//	System.out.println(e2.getName() +" is employeed " + e2.getComapnies()
-	//	+ "\n position details "+ e2.getEmployment());
-	//	System.out.println(e3.getName() +" is employeed " + e3.getComapnies());
-	//	System.out.println("IBM Employees " + c1.getEmployees()
-	//		+ "\n position details "+ c1.getEmployment());
-		System.out.println("ABB Employees " + c2.getEmployees());
+		EmploymentFactory ef = new EmploymentFactory();
+		//Employment employment1 = ef.hire(e1,c1, "stanowisko", 3333, dt.parse("2010-09-08"));
+		//employent1.fire(new Date());
+
+		Employment emp1 = ef.hire(e1, c1, "Accountant", 4000, dt.parse("2010-09-08"));
+		Employment emp2 = ef.hire(e2, c1, "Senior HR", 3600, dt.parse("2000-05-08"));
+		Employment emp3 = ef.hire(e2, c2, "Coach", 3500, dt.parse("2005-07-08"));
+		Employment emp4 = ef.hire(e3, c2, "Support", 3000, dt.parse("2011-01-08"));
 		
-		 ArrayList<Employment> employment = new ArrayList<>();
-		 employment.add(emp1);
-		 employment.add(emp2);
-		 employment.add(emp3);
-		 employment.add(emp4);
-		 employment.forEach(System.out::println);
+		ArrayList<Employment> employment = new ArrayList<>();
+		employment.add(emp1);
+		employment.add(emp2);
+		employment.add(emp3);
+		employment.add(emp4);
+		employment.forEach(System.out::println);
+		
+		System.out.println("\n");
+		System.out.println("IBM " + c1.getEmployment());
+		System.out.println("IBM employees " + ef.comapanyEmployees(c1, employment));
+		System.out.println("ABB " + c2.getEmployment());
+		System.out.println("\n");
+		System.out.println(e1.getName()+" employment " + e1.getEmployment());
+		System.out.println(e2.getName()+" employment " + e2.getEmployment());
+		System.out.println(e2.getName() + " is employed by " + ef.whereEmployeeWorks(e2, employment));
+		System.out.println(e3.getName()+" employment " + e3.getEmployment());
+		
+		System.out.println("##### \n");
+		((EmploymentFactory) emp1).fire(new Date());
+		employment.forEach(System.out::println);
 	}
-	
+
 }
