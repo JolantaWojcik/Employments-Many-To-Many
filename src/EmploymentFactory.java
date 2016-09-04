@@ -22,14 +22,31 @@ public class EmploymentFactory {
 		return emp;
 	}
 
-	public List<Employment> fire(List<Employment> emp){
-		emp.removeIf(e->e.getEndDate()!=null);
-		emp.stream().filter(u -> u.getEndDate() != null).collect(Collectors.toList());
-		return emp;
+	public List<Employment> fire(Employee e, Company c, List<Employment> empList){
+		for(Employment empl: empList){
+			if(empl.getEndDate()!=null){
+			//	empList.remove(empl);
+				c.removeEmployment(empl);
+				e.removeEmployment(empl);
+			}
+		}
+		empList.removeIf(a->a.getEndDate()!=null);
+	//	emp.stream().filter(u -> u.getEndDate() != null).collect(Collectors.toList());
+	//	return emp;
+		return empList;
 	}
 
 
 	public List<Employee> comapanyEmployees(Company company, List<Employment> emp) {
+//		List<Employee> currentCompanyEmpl = 
+//				emp.stream().filter(u -> u.getCompanies() == company)
+//				.map(Employment::getEmployees).collect(Collectors.toList());
+		for(Employment e: emp){
+			if(e.getEndDate()!=null){
+				emp.remove(e);
+				company.removeEmployment(e);
+			}
+		}
 //		List<Employee> newList = emp.stream().filter(u -> u.getCompanies() == company)
 //		.map(Employment::getEmployees).collect(Collectors.toList());
 //		Employment e = emp.stream().filter(a->a.getEndDate()!=null).findAny().get();

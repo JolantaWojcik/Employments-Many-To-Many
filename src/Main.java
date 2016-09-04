@@ -58,11 +58,11 @@ public class Main {
 		System.out.println(e3.getName()+" employment " + e3.getEmployment());
 		
 		System.out.println("\n #####");
-		emp1.fire(dt.parse("2011-09-08"));
-		ef.fire(employment);
+		emp2.fire(dt.parse("2011-09-08"));
+		ef.fire(e2, c1, employment);
 		employment.forEach(System.out::println);
 		System.out.println("\n");
-		System.out.println(e1.getName()+" employment " + e1.getEmployment());
+		System.out.println(e2.getName()+" employment " + e2.getEmployment());
 	}
 
 }
