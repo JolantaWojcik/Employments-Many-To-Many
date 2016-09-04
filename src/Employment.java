@@ -87,4 +87,8 @@ public class Employment {
 		return "Employment [position=" + position + ", salary=" + salary + ", startDate=" + dt.format((startDate)) + "]";
 	}
 
+	public void fire(Date date) {
+		setEndDate(date);
+	}
+
 }

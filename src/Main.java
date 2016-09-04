@@ -2,6 +2,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.NoSuchElementException;
 
 /*
  * Pracownik (imie, nazwisko)
@@ -41,10 +42,14 @@ public class Main {
 		employment.add(emp3);
 		employment.add(emp4);
 		employment.forEach(System.out::println);
+		System.out.println("#####");
 		
-		System.out.println("\n");
 		System.out.println("IBM " + c1.getEmployment());
+		try{
 		System.out.println("IBM employees " + ef.comapanyEmployees(c1, employment));
+		}catch (NoSuchElementException e){
+			e.printStackTrace();
+		}
 		System.out.println("ABB " + c2.getEmployment());
 		System.out.println("\n");
 		System.out.println(e1.getName()+" employment " + e1.getEmployment());
@@ -52,9 +57,12 @@ public class Main {
 		System.out.println(e2.getName() + " is employed by " + ef.whereEmployeeWorks(e2, employment));
 		System.out.println(e3.getName()+" employment " + e3.getEmployment());
 		
-		System.out.println("##### \n");
-		((EmploymentFactory) emp1).fire(new Date());
+		System.out.println("\n #####");
+		emp1.fire(dt.parse("2011-09-08"));
+		ef.fire(employment);
 		employment.forEach(System.out::println);
+		System.out.println("\n");
+		System.out.println(e1.getName()+" employment " + e1.getEmployment());
 	}
 
 }

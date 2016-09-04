@@ -76,7 +76,7 @@ public class Employee {
 	}
 	
 	public void removeEmployment(Employment emp) {
-		employment.remove(emp);
+		employment.removeIf(e->e.getEndDate()!=null);
 		emp.setEmployees(this);
 	}
 
